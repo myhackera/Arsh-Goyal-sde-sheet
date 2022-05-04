@@ -1,0 +1,12 @@
+def encode(arr):
+    i = 0
+    res = ""
+    n = len(arr)
+    while i < n:
+        c = arr[i]
+        count = 0
+        while i < n and arr[i] == c:
+            count += 1
+            i += 1
+        res += c+str(count)
+    return res

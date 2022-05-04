@@ -1,0 +1,16 @@
+class Solution:
+    def Anagrams(self, words, n):
+        
+        d = {}
+        for i in range(n):
+            c = ''.join(sorted(words[i]))
+            try:
+                d[c].append(words[i])
+            except:
+                d[c] = [words[i]]
+
+        res = []
+        for val in d.values():
+            res.append(val)
+        return res
+            

@@ -1,0 +1,23 @@
+class Solution:
+    def findTwoElement( self,arr, n): 
+        
+        repeat = 0
+        miss = 0
+        temp = [0]*n
+        for i in range(n):
+            
+            if temp[arr[i]-1] == 0:
+                temp[arr[i]-1] = 1
+                
+            elif temp[arr[i]-1] == 1:
+                repeat = arr[i]
+            
+            
+        for i in range(n):
+            if temp[i] == 0:
+                miss = i+1
+        
+                
+        ans = [repeat, miss]
+        return ans
+        

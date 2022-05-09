@@ -1,0 +1,23 @@
+
+class Solution:
+    def maxProfit(self, K, N, A):
+        
+        def stock(index, transNo, arr, n, k, dp):
+            
+            if index == n or transNo == 2*k:
+                return 0
+            if dp[index][transNo] != -1:
+                return dp[index][transNo]
+                
+            profit = 0
+            if transNo%2 == 0:  #( to buy )
+                profit = max((-1)*arr[index]+stock(index+1, transNo+1, arr, n, k,dp), stock(index+1, transNo, arr, n, k, dp))
+            else:
+                profit = max(arr[index]+stock(index+1, transNo+1, arr, n, k, dp), stock(index+1, transNo, arr, n, k, dp))
+                
+            dp[index][transNo] = profit
+            return dp[index][transNo]
+        
+        
+        dp = [[-1]*2*K for _ in range(N)]
+        return stock(0, 0, A, N, K, dp)

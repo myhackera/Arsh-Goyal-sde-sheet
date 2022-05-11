@@ -1,0 +1,27 @@
+class Solution:
+	def FirstNonRepeating(self, A):
+		
+		d = defaultdict()
+		q = []
+		ans = ""
+		cha = ""
+		
+		for i in range(len(A)):
+		    
+		    try:
+		        d[A[i]] += 1
+		    except:
+		        d[A[i]] = 1
+		        
+		    q.append(A[i])
+		    
+		    while q:
+		        if d[q[0]] > 1:
+		            q.pop(0)
+		        else:
+		           ans += q[0]
+		           break
+		    if len(q) == 0:
+		        ans += "#"
+            
+		return ans

@@ -1,0 +1,14 @@
+class Solution:
+    def displayContacts(self, n, contact, s):
+        
+        res = []
+        contact = set(contact)
+        for i in range(len(s)):
+            chars = s[:i+1]
+            m = [c for c in contact if c.startswith(chars)]
+            m.sort()
+            if len(m) > 0:
+                res.append(m)
+            else:
+                res.append("0")
+        return res

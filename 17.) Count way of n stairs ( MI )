@@ -1,0 +1,18 @@
+class Solution:
+    
+    #Function to count number of ways to reach the nth stair 
+    #when order does not matter.
+    def countWays(self,m):
+        
+        # mod = 1000000007
+        # return 1+m//2
+            if m == 1:
+                return 1
+            dp = [0]*(m+1)
+            dp[0] = 1
+            dp[1] = 2
+            dp[2] = 2
+            for i in range(3, m+1):
+                dp[i] = dp[i-2] + 1
+            return dp[m-1]
+                

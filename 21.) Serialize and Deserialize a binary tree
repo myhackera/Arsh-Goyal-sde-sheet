@@ -1,0 +1,28 @@
+def serialize(root, A):
+    
+    if root is None:
+        A.append(-1)
+        return
+    
+    A.append(root.data)
+    
+    serialize(root.left, A)
+    serialize(root.right, A)
+  
+
+    
+def deSerialize(data):
+    i = 0
+    def des(data):
+        nonlocal i
+        if A[i] == -1:
+            i += 1
+            return 
+            
+        root = Node(int(data[i]))
+        i += 1 
+        root.left = des(data)
+        root.right = des(data)
+        return root
+        
+    return des(data)

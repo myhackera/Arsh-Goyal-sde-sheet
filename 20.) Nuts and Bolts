@@ -1,0 +1,14 @@
+class Solution:
+
+	def matchPairs(self,nuts, bolts, n):
+		d1 = { "!": 0, "#": 1, "$": 2, "%": 3, "&": 4, "*": 5, "@": 6, "^": 7, "~": 8 }
+		d2 = { 0: "!", 1: "#", 2: "$", 3: "%", 4: "&", 5: "*", 6: "@", 7: "^", 8: "~" } 
+		for i in range(n):
+		    nuts[i] = d1[nuts[i]]
+		    bolts[i] = d1[bolts[i]]
+	    nuts.sort()
+	    bolts.sort()
+	    for i in range(n):
+	        nuts[i] = d2[nuts[i]]
+	        bolts[i] = d2[bolts[i]]
+		

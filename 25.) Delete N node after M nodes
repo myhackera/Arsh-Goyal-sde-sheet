@@ -1,0 +1,24 @@
+class Solution:
+    def skipMdeleteN(self, head, M, N):
+        
+        temp = head
+        i = 0
+        while temp and i < M-1:
+            temp = temp.next
+            i += 1
+        if not temp or temp.next == None:
+            return 
+        
+        ptr =  temp
+        i = 0
+        while temp and i < N:
+            temp = temp.next
+            i += 1
+        if not temp or not temp.next:
+            ptr.next = None
+            return 
+        
+        temp = temp.next
+        ptr.next = temp
+        
+        self.skipMdeleteN(temp, M, N)

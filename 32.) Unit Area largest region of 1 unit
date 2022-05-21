@@ -1,0 +1,32 @@
+class Solution:
+
+    #Function to find unit area of the largest region of 1s.
+	def findMaxArea(self, grid):
+	    
+		maxarea = 0
+		n, m = len(grid), len(grid[0])
+		vis = [[False for i in range(m)] for j in range(n)]
+		
+		def dfs(grid, i, j, n, m):
+		    if i < 0 or j < 0 or i >= n or j >= m or vis[i][j] == True or grid[i][j] == 0:
+		        return 0
+		    c = 1
+		    vis[i][j] = True
+		    c += dfs(grid, i+1, j, n, m)
+		    c += dfs(grid, i-1, j, n, m)
+		    c += dfs(grid, i, j+1, n, m)
+		    c += dfs(grid, i, j-1, n, m)
+		    c += dfs(grid, i+1, j+1, n, m)
+		    c += dfs(grid, i+1, j-1, n, m)
+		    c += dfs(grid, i-1, j+1, n, m)
+		    c += dfs(grid, i-1, j-1, n, m)
+		    return c
+		   
+		    
+		for i in range(n):
+		    for j in range(m):
+		        if not vis[i][j]:
+		            temp = dfs(grid, i, j, n, m)
+		            maxarea = max(maxarea, temp)
+		            
+		return maxarea

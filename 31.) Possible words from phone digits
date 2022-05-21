@@ -1,0 +1,15 @@
+class Solution:
+    def possibleWords(self,a,N):
+        
+        res = []
+        d = { 2: "abc", 3: "def", 4: "ghi", 5: "jkl", 6: "mno", 7: "pqrs", 8: "tuv", 9: "wxyz" } 
+        temp = list(d[a[0]])
+        for i in range(1, N):
+            t = list(d[a[i]])
+            res = []
+            for c in temp:
+                for char in t:
+                    res.append(c+char)
+            temp = res
+        return temp
+                    

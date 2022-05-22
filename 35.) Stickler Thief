@@ -1,0 +1,17 @@
+
+class Solution:  
+    
+    #Function to find the maximum money the thief can get.
+    def FindMaxSum(self,a, n):
+        
+        dp = [-1]*(n+1)
+        
+        def solve(a, n):
+            if n < 0:
+                return 0
+            if dp[n] != -1:
+                return dp[n]
+            dp[n] = max(a[n]+solve(a, n-2), solve(a, n-1))
+            return dp[n]
+            
+        return solve(a, n-1)

@@ -1,0 +1,22 @@
+class Solution:
+    # your task is to complete this function
+    # function should return an integer
+    def atoi(self,string):
+        
+        d = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"}
+        num = 0
+        i = 0
+        if string[0] == "-":
+            start = 1
+        else:
+            start = 0
+        
+        i = start
+        while i < len(string):
+            if string[i] in d:
+                num = num*10 + (ord(string[i])-48)
+            else:
+                return -1
+            i += 1
+            
+        return num*-1 if start else num

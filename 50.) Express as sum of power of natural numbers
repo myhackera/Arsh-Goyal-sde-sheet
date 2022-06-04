@@ -1,0 +1,49 @@
+RECURSIVE :
+===========>>>>
+
+class Solution:
+    
+    def express(self, x, target, i):
+        
+        if target == 0: return 1
+        if i < 0: return 0
+        
+        pa = pow(i, x)
+        if pa <= target:
+            return self.express(x, target-pa, i-1)+self.express(x, target, i-1)
+        else:
+            return self.express(x, target, i-1)        
+        
+	def numOfWays(self, n, x):
+		
+		return self.express(x, n, n)
+
+
+MEMOIZATION :
+============>>>
+
+class Solution:
+    
+    def express(self, x, target, i, dp):
+        
+        if target == 0: return 1
+        if i < 0: return 0
+        if dp[target][i] != -1:
+            return dp[target][i]
+        
+        pa = pow(i, x)
+        if pa <= target:
+            dp[target][i] = self.express(x, target-pa, i-1, dp)+self.express(x, target, i-1, dp)
+            return dp[target][i]
+        else:
+            dp[target][i] = self.express(x, target, i-1, dp)
+            return dp[target][i]
+            
+            
+        
+	def numOfWays(self, n, x):
+	
+	    mod = 10**9 + 7
+		dp = [[-1]*(1001)  for _ in range(1001) ]
+		return self.express(x, n, n, dp)%mod
+		

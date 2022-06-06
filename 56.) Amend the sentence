@@ -1,0 +1,13 @@
+class Solution:
+
+    def amendSentence(self, s):
+        
+        ans = ''
+        ans += s[0].lower()
+        sr = s[1:len(s)]
+        for char in sr:
+            if char.islower():
+                ans += char
+            elif char.isupper():
+                ans = ans + ' ' + char.lower()
+        return ans

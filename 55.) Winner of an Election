@@ -1,0 +1,20 @@
+class Solution:
+    
+    #Complete this function
+    
+    #Function to return the name of candidate that received maximum votes.
+    def winner(self,arr,n):
+        d = {}
+        for val in arr:
+            if val in d:
+                d[val] += 1
+            else:
+                d[val] = 1
+        l = sorted(d.items(), key=lambda val: val[1],reverse=True)
+        mx = l[0][1]
+        res = []
+        for k, v in d.items():
+            if v == mx:
+                res.append(k)
+        res.sort()
+        return (res[0], mx)

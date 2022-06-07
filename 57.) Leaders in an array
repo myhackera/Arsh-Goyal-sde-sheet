@@ -1,0 +1,15 @@
+class Solution:
+   
+    def leaders(self, A, N):
+        
+        max_from_right = A[N-1]
+        temp = []
+        temp.append(max_from_right)
+        
+        for i in range(N-2, -1, -1):
+            
+            if max_from_right <= A[i]:
+                temp.append(A[i])
+                max_from_right = A[i]
+        
+        return temp[::-1]
